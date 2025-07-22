@@ -26,7 +26,7 @@ The agent's workflow is designed to be highly interactive, giving the user contr
 
 ## Architecture Diagram
 
-The following diagram illustrates the agentic architecture of the system:
+The following diagram illustrates the logical agentic architecture of the system:
 
 ```mermaid
 graph TD
@@ -45,6 +45,10 @@ graph TD
     I --> B;
     B --> A;
 ```
+
+### High-Level Workflow
+
+![Agent Flow Diagram](1-flow.png)
 
 ## Component Agents
 
@@ -90,7 +94,7 @@ The system is composed of a hierarchy of specialized agents, each with a specifi
     poetry install
     ```
 
-3.  **Configure your environment:**
+4.  **Configure your environment:**
     -   Copy the `env_example` file to a new file named `.env`:
         ```bash
         cp env_example .env

@@ -53,6 +53,7 @@ def create() -> None:
     }
     adk_app = AdkApp(
         agent=root_agent,
+        env_vars=env_vars,
         enable_tracing=True,
     )
 
@@ -69,7 +70,6 @@ def create() -> None:
         display_name=root_agent.name,
         requirements=[wheel_path],
         extra_packages=[wheel_path],
-        env_vars=env_vars,
     )
     print(f"Created remote agent: {remote_agent.resource_name}")
     print(f"With environment variables: {env_vars}")
