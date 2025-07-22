@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "LeadGenerationResearch"
+version = "0.1.0"
+description = "An interactive lead generation agent using an agentic framework."
+authors = ["Your Name <your.email@example.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+packages = [{include = "LeadGenerationResearch"}]
+
+[tool.poetry.dependencies]
+python = ">=3.9"
+google-adk = ">=1.0.0"
+google-genai = ">=0.5.0"
+python-dotenv = ">=1.0.0"
+json5 = ">=0.9.0"
+pandas = ">=2.0.0"
+requests = ">=2.31.0"
+typing-extensions = ">=4.5.0"
+absl-py = ">=2.2.1"
+google-cloud-aiplatform = { extras = ["agent_engines"], version = ">=1.91.0,!=1.92.0" }
+pydantic = ">=2.10.6,<3.0.0"
+cloudpickle="==3.1.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=7.0.0"
+pytest-asyncio = ">=0.21.0"
+black = ">=23.0.0"
+flake8 = ">=6.0.0"
+mkdocs = ">=1.5.0"
+mkdocs-material = ">=9.0.0"
+mkdocs-mermaid2-plugin = ">=1.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
