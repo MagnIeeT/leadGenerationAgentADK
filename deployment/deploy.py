@@ -39,8 +39,6 @@ flags.DEFINE_bool("create", False, "Creates a new agent.")
 flags.DEFINE_bool("delete", False, "Deletes an existing agent.")
 flags.mark_bool_flags_as_mutual_exclusive(["create", "delete"])
 
-AGENT_WHL_FILE = "LeadGenerationResearch-0.1.0-py3-none-any.whl"
-
 
 def create() -> None:
     """Creates an agent engine for the Lead Generation Agent."""
@@ -57,19 +55,23 @@ def create() -> None:
         enable_tracing=True,
     )
 
-    # The path to the wheel file inside the deployment directory.
-    wheel_path = os.path.join(os.path.dirname(__file__), AGENT_WHL_FILE)
-    if not os.path.exists(wheel_path):
-        raise FileNotFoundError(
-            f"Agent wheel file not found at: {wheel_path}. "
-            "Please run the build.sh script first."
-        )
-
     remote_agent = agent_engines.create(
         adk_app,
         display_name=root_agent.name,
-        requirements=[wheel_path],
-        extra_packages=[wheel_path],
+        requirements=[
+            "google-adk>=1.0.0",
+            "google-cloud-aiplatform[agent_engines]>=1.91.0,!=1.92.0",
+            "google-genai>=0.5.0",
+            "python-dotenv>=1.0.0",
+            "pydantic>=2.10.6,<3.0.0",
+            "cloudpickle==3.1.1",
+            "json5>=0.9.0",
+            "pandas>=2.0.0",
+            "requests>=2.31.0",
+            "typing-extensions>=4.5.0",
+            "absl-py>=2.2.1",
+        ],
+        extra_packages=["./LeadGenerationResearch"],
     )
     print(f"Created remote agent: {remote_agent.resource_name}")
     print(f"With environment variables: {env_vars}")

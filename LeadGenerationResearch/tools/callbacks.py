@@ -1,3 +1,17 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 """Callbacks for the Lead Generation Agent."""
 
 from google.adk.agents.callback_context import CallbackContext
@@ -8,7 +22,7 @@ from datetime import datetime
 from typing import Optional
 from google.genai.types import Content
 
-async def before_agent_run(callback_context: CallbackContext) -> Optional[Content]:
+def before_agent_run(callback_context: CallbackContext) -> Optional[Content]:
     """A callback function to initialize and manage the conversation context."""
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     callback_context.state["current_time"] = current_time
@@ -28,7 +42,7 @@ async def before_agent_run(callback_context: CallbackContext) -> Optional[Conten
     
     return None
 
-async def after_tool_run(
+def after_tool_run(
     tool, args, tool_context: ToolContext, tool_response
 ) -> None:
     """A callback to process the output of key tools and update the state."""

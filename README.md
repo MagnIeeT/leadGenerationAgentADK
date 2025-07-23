@@ -130,7 +130,7 @@ REASONING_ENGINE_ID=""
 The agent can be run from the command line using the Google ADK CLI:
 
 ```bash
-adk run
+poetry run adk run
 ```
 
 This will start an interactive chat session where you can begin the lead generation process.
@@ -158,33 +158,21 @@ To deploy the agent to the Google Cloud Agent Engine, you can use the provided `
 
 ### Deployment Steps
 
-1.  **Build the Agent Package:**
-    -   First, you need to build your agent's code into a Python wheel file. This packages your code for deployment.
-    -   Make the build script executable:
-        ```bash
-        chmod +x build.sh
-        ```
-    -   Run the build script:
-        ```bash
-        ./build.sh
-        ```
-    -   This will create a `.whl` file in the `deployment/` directory.
-
-2.  **Create the Agent in the Cloud:**
+1.  **Create the Agent in the Cloud:**
     ```bash
-    python deployment/deploy.py --create
+    poetry run python deployment/deploy.py --create
     ```
     This will create a new agent in the Agent Engine and print the resource name.
 
-3.  **List Agents:**
+2.  **List Agents:**
     ```bash
-    python deployment/deploy.py --list
+    poetry run python deployment/deploy.py --list
     ```
     This will list all the agents in your project.
 
-4.  **Delete an Agent:**
+3.  **Delete an Agent:**
     ```bash
-    python deployment/deploy.py --delete --resource_id <your-agent-resource-id>
+    poetry run python deployment/deploy.py --delete --resource_id <your-agent-resource-id>
     ```
     This will delete the specified agent.
 
@@ -198,7 +186,7 @@ Once your agent is deployed, you can test it using the `test_deploy.py` script.
 
 2.  **Run the test script:**
     ```bash
-    python deployment/test_deploy.py
+    poetry run python deployment/test_deploy.py
     ```
 
 This will start an interactive chat session with your deployed agent.
@@ -210,13 +198,13 @@ After deploying your agent to the Agent Engine, you can publish it to your Agent
 ### Prerequisites
 
 *   You have successfully deployed your agent using the `deploy.py` script.
-*   You have your AgentSpace ID.
+*   You have created an app in your AgentSpace and have the App ID.
 
 ### Publishing Steps
 
-1.  **Update the `publish.sh` script:**
-    -   Open the `publish/publish.sh` file.
-    -   Set the `APP_ID`, `LOCATION`, and `REASONING_ENGINE_ID` variables to match your environment.
+1.  **Update your `.env` file:**
+    -   Open your `.env` file.
+    -   Add a new variable `AGENT_SPACE_ID` and set it to the App ID you created in AgentSpace.
 
 2.  **Run the script:**
     ```bash

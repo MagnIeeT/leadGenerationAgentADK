@@ -15,4 +15,5 @@ GEN_ADVANCED_MODEL="gemini-2.5-pro"
 # Deployment Configuration
 # The ID of the deployed agent, returned after running `python deployment/deploy.py --create`
 REASONING_ENGINE_ID=""
+AGENT_SPACE_ID=""
 
